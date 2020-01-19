@@ -1,21 +1,12 @@
-# Instructions
-if first run with blank project, run below in Terminal in VSCode.
-```
-poetry new ${your_project_name}
-poetry install 
-poetry add ${package}
-```
+# Instructions(Simple Version)
+1. Download **VS Code** and **Docker**, then install them
+2. Install **[VS Code Remote - Containers](https://aka.ms/vscode-remote/containers)** extension 
+   - Clone this repository to your local filesystem.
+   - Press <kbd>F1</kbd> and select the **Remote-Containers: Open Folder in Container...** command.
+   - Select the cloned copy of this folder, wait for the container to start, and try things out!
+3. Enjoy It!
 
-if has poetry project, execute below commad
-```
-# create application directory
-USER vscode
-RUN sudo mkdir /app
-WORKDIR /app
-ONBUILD COPY pyproject.* .
-# install dependencies:
-ONBUILD RUN poetry install -n
-```
+---
 
 # Try Out Development Containers: Python
 
