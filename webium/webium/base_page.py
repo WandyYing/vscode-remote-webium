@@ -55,3 +55,11 @@ class BasePage(object):
 
     def find_elements(self, *args):
         return self._driver.find_elements(*args)
+    
+    def __enter__(self):
+        #todo: suport with context
+        return self
+
+    def __exit__(self, type, value, trace):
+        #todo: suport with context
+        pass

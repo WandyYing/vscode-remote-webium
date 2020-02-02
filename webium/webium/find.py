@@ -1,5 +1,7 @@
 from types import MethodType
-from selenium.webdriver.remote.webelement import WebElement
+from typing import List
+# from selenium.webdriver.remote.webelement import WebElement
+from webium.controls.webelement import WebElement
 from webium.driver import get_driver
 from webium.errors import WebiumException
 from webium.base_page import is_element_present
@@ -28,7 +30,7 @@ class Find(object):
             self.by = webium.settings.default_search_type
         self.ui_type = ui_type
         self.context = context
-        self._target_element = None
+        self._target_element: ui_type = None  
         self.init_args = args
         self.init_kwargs = kwargs
         self._validate_params()
@@ -43,8 +45,8 @@ class Find(object):
             if not issubclass(self.ui_type, WebElement):
                 raise WebiumException('UI types should inherit WebElement')
 
-    def __get__(self, obj, *args):
-        self.context = obj
+    def __get__(self, instance, owner):
+        self.context = instance
         self._search_element()
         return self._target_element
 
@@ -85,7 +87,7 @@ class Finds(Find):
 
     def _search_element(self):
         get_driver().implicitly_wait(0)
-        self._target_element = self.context.find_elements(self.by, self.value)
+        self._target_element: List[self.ui_type] = self.context.find_elements(self.by, self.value)
         get_driver().implicitly_wait(webium.settings.implicit_timeout)
         for item in self._target_element:
             item.__class__ = self.ui_type

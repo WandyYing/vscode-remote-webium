@@ -5,6 +5,7 @@ from webium.find import Finds
 
 
 class TestClick(SimplePageTest):
+
     def test_basic_finds(self):
         assert self.page.paragraphs[4].get_attribute('id') == 'nbspandspaces'
 
