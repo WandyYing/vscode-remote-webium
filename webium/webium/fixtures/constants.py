@@ -21,3 +21,8 @@ class Browser:
     IPHONE = "iphone"
     IPAD = "ipad"
     REMOTE = "remote"
+
+
+class Files:
+    DOWNLOADS_FOLDER = "downloaded_files"
+    ARCHIVED_DOWNLOADS_FOLDER = "archived_files"
